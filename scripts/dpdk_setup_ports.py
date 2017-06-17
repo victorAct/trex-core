@@ -99,7 +99,7 @@ Other network devices
 
 
     def do_bind_one (self,key):
-        cmd='%s dpdk_nic_bind.py --bind=igb_uio %s ' % (sys.executable, key)
+        cmd='%s dpdk_nic_bind.py --bind=vfio-pci %s ' % (sys.executable, key)
         print(cmd)
         res=os.system(cmd);
         if res!=0:
@@ -143,7 +143,7 @@ Other network devices
 
 
             if 'Driver_str' in self.m_devices[key]:
-                if self.m_devices[key]['Driver_str'] !='igb_uio' :
+                if self.m_devices[key]['Driver_str'] !='vfio-pci' :
                     self.do_bind_one (key)
             else:
                 self.do_bind_one (key)
